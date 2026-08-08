@@ -9,14 +9,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            background-color: #FAF8F5;
-            color: #2D3748;
-        }
-        /* Reverted to exact original metallic gold style */
+        html { scroll-behavior: smooth; }
+        body { background-color: #FAF8F5; color: #2D3748; }
         .brand-badge {
             background: linear-gradient(145deg, #ffffff, #f3ede2);
             border: 2px solid #D4AF37;
@@ -26,14 +20,12 @@
             background: linear-gradient(135deg, #c49a6c, #a37948);
             color: #ffffff;
         }
-        .gold-btn:hover {
-            background: linear-gradient(135deg, #b3895b, #926837);
-        }
+        .gold-btn:hover { background: linear-gradient(135deg, #b3895b, #926837); }
     </style>
 </head>
 <body class="font-sans antialiased min-h-screen">
 
-    <!-- Navigation Header -->
+    <!-- Header -->
     <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-amber-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#about" class="flex items-center space-x-3 group">
@@ -45,7 +37,6 @@
                     <p class="text-xs text-amber-700 font-medium">Building Materials • Sitapur</p>
                 </div>
             </a>
-
             <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-700">
                 <a href="#about" class="hover:text-amber-700 transition">About Us</a>
                 <a href="#brands" class="hover:text-amber-700 transition">Brands</a>
@@ -55,12 +46,11 @@
         </div>
     </header>
 
-    <!-- Main Content Layout -->
+    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Left Column: Hero & Brands Section -->
+        <!-- Left Column -->
         <div class="lg:col-span-7 space-y-8">
-            
             <section id="about" class="scroll-mt-24 bg-gradient-to-br from-sky-50 via-white to-amber-50 border border-sky-100 rounded-3xl p-8 shadow-sm relative overflow-hidden">
                 <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-4">
                     Authorized Stockist & Wholesaler
@@ -70,12 +60,8 @@
                 </h2>
                 
                 <div class="space-y-2 mb-5">
-                    <p class="text-sky-800 font-semibold text-sm">
-                        <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> FE 550: Ultimate Load-Bearing Capacity for Heavy Structures
-                    </p>
-                    <p class="text-sky-800 font-semibold text-sm">
-                        <i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> FE 550D: The Ductile Choice for High-Rise Safety
-                    </p>
+                    <p class="text-sky-800 font-semibold text-sm"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> FE 550: Ultimate Load-Bearing Capacity for Heavy Structures</p>
+                    <p class="text-sky-800 font-semibold text-sm"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> FE 550D: The Ductile Choice for High-Rise Safety</p>
                 </div>
 
                 <div class="p-4 bg-white/80 rounded-xl border border-amber-200">
@@ -84,7 +70,7 @@
                 </div>
             </section>
 
-            <!-- Brands Section -->
+            <!-- Brands Section (Hardcoded & Alphabetized) -->
             <section id="brands" class="scroll-mt-24 bg-white/70 backdrop-blur-sm border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                     <div>
@@ -94,26 +80,69 @@
                     <span class="text-xs font-semibold bg-sky-100 text-sky-800 px-3 py-1 rounded-full whitespace-nowrap">18+ Suppliers</span>
                 </div>
 
-                <!-- Grid of Sorted Badges -->
                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 sm:gap-6">
                     
-                    <!-- Loop sorted alphabetically using Jinja `|sort` -->
-                    {% for brand in data.brands|sort %}
-                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition duration-200 cursor-pointer mx-auto p-2 sm:p-3 overflow-hidden">
-                        <img 
-                            src="/static/logos/{{ brand }}.png" 
-                            alt="{{ brand }} Logo" 
-                            class="w-full h-full object-contain"
-                            onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 leading-tight uppercase\'>{{ brand }}</span></div>';"
-                        >
+                    <!-- Static Brand Badges -->
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/ANKUR.png" alt="ANKUR" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>ANKUR</span></div>';">
                     </div>
-                    {% endfor %}
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/APOLLO.png" alt="APOLLO" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>APOLLO</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/APOLLO TMT.png" alt="APOLLO TMT" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>APOLLO TMT</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/GALLANT.png" alt="GALLANT" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>GALLANT</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/GOVINDA.png" alt="GOVINDA" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>GOVINDA</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/JINDAL.png" alt="JINDAL" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>JINDAL</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/JSW.png" alt="JSW" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>JSW</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/JSW Neosteel.png" alt="JSW NEOSTEEL" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>JSW NEOSTEEL</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/KAMDHENU.png" alt="KAMDHENU" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>KAMDHENU</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/MARUTI.png" alt="MARUTI" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>MARUTI</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/MAZBOOT.png" alt="MAZBOOT" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>MAZBOOT</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/OMPL.png" alt="OMPL" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>OMPL</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/POWERPLUS.png" alt="POWERPLUS" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>POWERPLUS</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/RASHMI.png" alt="RASHMI" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>RASHMI</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/RUNGTA.png" alt="RUNGTA" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>RUNGTA</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/SAIL.png" alt="SAIL" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>SAIL</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/SKY.png" alt="SKY" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>SKY</span></div>';">
+                    </div>
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3 overflow-hidden">
+                        <img src="logos/TATA TISCON.png" alt="TATA TISCON" class="w-full h-full object-contain" onerror="this.onerror=null; this.outerHTML='<div class=\'flex flex-col items-center justify-center w-full h-full\'><i class=\'fa-solid fa-award text-amber-600 text-[10px] mb-1\'></i><span class=\'text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase\'>TATA TISCON</span></div>';">
+                    </div>
 
-                    <!-- Fixed "Others" Badge added exactly at the end -->
-                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition duration-200 cursor-pointer mx-auto p-2 sm:p-3">
+                    <!-- "Others" Badge -->
+                    <div class="brand-badge rounded-full flex flex-col items-center justify-center text-center w-20 h-20 sm:w-24 sm:h-24 hover:scale-105 transition mx-auto p-2 sm:p-3">
                         <div class="flex flex-col items-center justify-center">
                             <i class="fa-solid fa-plus text-amber-600 text-lg sm:text-xl mb-1"></i>
-                            <span class="text-[9px] sm:text-[11px] font-extrabold text-slate-800 leading-tight uppercase">Others</span>
+                            <span class="text-[9px] sm:text-[11px] font-extrabold text-slate-800 uppercase">Others</span>
                         </div>
                     </div>
                     
@@ -121,7 +150,7 @@
             </section>
         </div>
 
-        <!-- Right Column: Audience & Interactive Contact Hub -->
+        <!-- Right Column -->
         <div class="lg:col-span-5 space-y-8">
             
             <section id="audience" class="scroll-mt-24">
@@ -131,14 +160,22 @@
                 </div>
                 
                 <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-3">
-                    {% for audience in data.target_audience %}
-                    <div class="{{ audience.bg }} p-4 rounded-2xl shadow-sm flex items-center space-x-3 transition hover:shadow-md hover:-translate-y-0.5 duration-200 cursor-default">
-                        <div class="w-10 h-10 rounded-xl bg-white/60 flex items-center justify-center text-lg shadow-inner shrink-0">
-                            <i class="fa-solid {{ audience.icon }}"></i>
-                        </div>
-                        <span class="text-xs font-bold leading-snug">{{ audience.name }}</span>
+                    <div class="bg-blue-50/70 border border-blue-100 p-4 rounded-2xl shadow-sm flex items-center space-x-3 transition hover:shadow-md hover:-translate-y-0.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center text-lg shadow-inner shrink-0"><i class="fa-solid fa-house-chimney text-blue-600"></i></div>
+                        <span class="text-xs font-bold leading-snug">Individual Homeowners</span>
                     </div>
-                    {% endfor %}
+                    <div class="bg-amber-50/70 border border-amber-100 p-4 rounded-2xl shadow-sm flex items-center space-x-3 transition hover:shadow-md hover:-translate-y-0.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center text-lg shadow-inner shrink-0"><i class="fa-solid fa-helmet-safety text-amber-600"></i></div>
+                        <span class="text-xs font-bold leading-snug">Civil Contractors</span>
+                    </div>
+                    <div class="bg-emerald-50/70 border border-emerald-100 p-4 rounded-2xl shadow-sm flex items-center space-x-3 transition hover:shadow-md hover:-translate-y-0.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center text-lg shadow-inner shrink-0"><i class="fa-solid fa-truck-fast text-emerald-600"></i></div>
+                        <span class="text-xs font-bold leading-snug">Wholesale Dealers</span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm flex items-center space-x-3 transition hover:shadow-md hover:-translate-y-0.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/80 flex items-center justify-center text-lg shadow-inner shrink-0"><i class="fa-solid fa-city text-slate-600"></i></div>
+                        <span class="text-xs font-bold leading-snug">Infrastructure Projects</span>
+                    </div>
                 </div>
             </section>
 
@@ -192,12 +229,7 @@
                     </div>
 
                     <div class="rounded-xl overflow-hidden border border-slate-200 shadow-inner h-36 relative">
-                        <iframe 
-                            class="w-full h-full border-0" 
-                            loading="lazy" 
-                            allowfullscreen 
-                            src="https://maps.google.com/maps?q=Bijwar%2C%20Sitapur%2C%20Uttar%20Pradesh%20261001&t=&z=14&ie=UTF8&iwloc=&output=embed">
-                        </iframe>
+                        <iframe class="w-full h-full border-0" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=Bijwar%2C%20Sitapur%2C%20Uttar%20Pradesh%20261001&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
                     </div>
 
                     <button onclick="openDirections()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center">
@@ -212,6 +244,7 @@
         &copy; 2026 ONE TRADE • Bijwar, Sitapur, UP (261001) • Contact: +91-9795650090
     </footer>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Changed file path here -->
+    <script src="js/main.js"></script>
 </body>
 </html>
